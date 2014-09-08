@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GAllery_Generator>
+  <InputPath>c:\ImagesAPublier</InputPath>
+  <OutputPath>E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\ImagesAPublier</OutputPath>
+  <ftpServer>ftp.monfournisseurdacces.fr</ftpServer>
+  <ftpUser>Moi</ftpUser>
+  <ftpPassword>TmkCCSeEnww=</ftpPassword>
+  <httpServer>http://monsiteweb.fr</httpServer>
+  <MailFrom>moi@monfournisseurdacces.fr</MailFrom>
+  <MailServer>smtp.monfournisseurdacces.fr</MailServer>
+  <MailTo>moi@monfournisseurdacces.com,titi@toto.com,tata@tutu.org</MailTo>
+  <MailSubject>Voilà ma nouvelle galerie!</MailSubject>
+  <MailText>La voilà:
+
+%URL%
+
+J'espère que vous l'apprécierez,
+Moi</MailText>
+  <htUser>copain</htUser>
+  <htPassword>azerty</htPassword>
+  <PicWidth />
+  <PicHeight />
+  <MiniPicWidth />
+  <MiniPicHeight />
+  <htmltemplate />
+</GAllery_Generator>

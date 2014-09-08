@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GAllery_Generator>
+  <InputPath>c:\PicturesToPublish</InputPath>
+  <OutputPath>C:\Wintemp\PicturesToPublish</OutputPath>
+  <ftpServer>ftp.myISP.com</ftpServer>
+  <ftpUser>Myself</ftpUser>
+  <ftpPassword>TmkCCSeEnww=</ftpPassword>
+  <httpServer>http://mywebsite.com</httpServer>
+  <MailFrom>myself@myISP.com</MailFrom>
+  <MailServer>smtp.myISP.com</MailServer>
+  <MailTo>myself@myISP.com,foo@bar.com,baz@quux.com</MailTo>
+  <MailSubject>Here is my new web gallery</MailSubject>
+  <MailText>Check it out, it's there:
+
+%URL%
+
+Hope you'll like it,
+Myself</MailText>
+  <htUser>Pal</htUser>
+  <htPassword>azerty</htPassword>
+  <PicWidth />
+  <PicHeight />
+  <MiniPicWidth />
+  <MiniPicHeight />
+  <htmltemplate />
+</GAllery_Generator>
