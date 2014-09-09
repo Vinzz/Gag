@@ -6,6 +6,7 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections.Generic; 
@@ -87,9 +88,7 @@ namespace Gag
         {
         	try
         	{	  			
-	        	bool bLB = (gData.LightBox == true);
-	  			
-	        	//Custom template
+                //Custom template
 	        	if(gData.htmltemplate != wDir.FullName + @"\index.html")
 	        		File.Copy(gData.htmltemplate, wDir.FullName + @"\index.html");
 	        	
@@ -100,7 +99,7 @@ namespace Gag
 	            string currentString = null;
 	           	
 	            #region LightBox copy
-	            if(bLB == true)
+                if (gData.LightBox)
 	            {
 	            	if(Directory.Exists(StaticTools.GetExecutingDir() + @"\lightBox"))
 	        	   {
@@ -126,13 +125,8 @@ namespace Gag
 	            		
 						long i = 0;
 						bool flag = false;
-						
-						FileInfo[] fi = wDir.GetFiles();
 
-						// Sorts the FileInfo[] array
-						Array.Sort(fi, 
-						           delegate(FileInfo f1, FileInfo f2){
-    						return f1.CreationTime.CompareTo(f2.CreationTime);});
+                        FileInfo[] fi = wDir.GetFiles().ToList().OrderBy(x => x.Name).ToArray();
 
 		                foreach (FileInfo fileInfo in fi)
 		                {
@@ -141,8 +135,8 @@ namespace Gag
 		                    if (Regex.IsMatch(fileInfo.Extension, @".+(jpg)$|.+(jpeg)", RegexOptions.IgnoreCase))
 		                    {
 		                    	myBuilder.Append(@"<a href=""" + fileInfo.Name + @"""");
-		                    	
-		                    	if(bLB == true)
+
+                                if (gData.LightBox == true)
 		                    	{
 		                    		myBuilder.Append(@" rel=""lightbox[Gag]"" ");
 		                    		if(flag == false)
@@ -180,8 +174,8 @@ namespace Gag
 		                	myBuilder.AppendLine(@"<br/><br/>");
 	            			myBuilder.AppendLine(@"<a href=""GenuinePictures.zip"">" + StaticTools.AppStringRManager.GetString("ZipArchive") + "</a>");
 		                }
-		                
-		                if(bLB == true)
+
+                        if (gData.LightBox == true)
 	           			{
 		                	myBuilder.AppendLine(@"<br/><br/>");
 	            			myBuilder.AppendLine(StaticTools.AppStringRManager.GetString("LightBox") + @"<a href=""http://www.huddletogether.com/projects/lightbox2/"">" + "LightBox 2"  + "</a>");
@@ -202,6 +196,7 @@ namespace Gag
 	        catch (Exception ex)
 	        {
 	        	 StaticTools.ShowMessage(ex.Message);
+                 throw;
 	        }
         }
     }

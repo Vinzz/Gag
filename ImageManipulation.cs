@@ -24,18 +24,13 @@ namespace Gag
                 //Check the orientation of the photo
                 int myOrientation = 0;
                 PropertyItem propItem = null;
-				string myDate = "0000:00:00 00:00:00";
-				
+
                 try
                 {
                     propItem = imgPhoto.GetPropertyItem((int)0x0112 /*orientation flag*/);
                     myOrientation = BitConverter.ToUInt16(propItem.Value, 0);
-                    
-                    
-                    propItem = imgPhoto.GetPropertyItem((int)0x9003 /*DateTimeOriginal*/);
-                    
-                    System.Text.ASCIIEncoding Value = new System.Text.ASCIIEncoding();
-                    myDate = Value.GetString(propItem.Value);
+
+                    picDate = new FileInfo(stPhotoPath).LastWriteTime;
                 }
                 catch (Exception)
                 {
@@ -87,19 +82,7 @@ namespace Gag
                 }
 
                 FileInfo fi = new FileInfo(stPhotoPath);
-                
-                if(!myDate.StartsWith("0000"))
-                {
-                	char[] cSeps = {':',' '};
-                	string[] stSplittedDate = myDate.Split(cSeps);
-                	
-                	picDate = new DateTime( int.Parse(stSplittedDate[0]),int.Parse(stSplittedDate[1]),int.Parse(stSplittedDate[2]),int.Parse(stSplittedDate[3]),int.Parse(stSplittedDate[4]),int.Parse(stSplittedDate[5]));
-                }
-                else
-                {
-                	picDate = new DateTime(fi.CreationTime.Year,fi.CreationTime.Month,fi.CreationTime.Day);
-                }
-                
+                  
                 int sourceWidth = imgPhoto.Width;
                 int sourceHeight = imgPhoto.Height;
 

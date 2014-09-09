@@ -105,8 +105,8 @@ namespace Gag
                                                 _GData.PicWidth, _GData.PicHeight,  ref FileDate);
 
                     	string stSavePath = wDir.FullName + @"\" + FileDate.Year + "_"
-                    	             					  + FileDate.Month + "_"
-                    	             					  + FileDate.Day + "_"
+                    	             					  + FileDate.Month.ToString("D2") + "_"
+                                                          + FileDate.Day.ToString("D2") + "_"
                     	             					  + fileInfo.Name;
                         Resized.Save(stSavePath, ImageFormat.Jpeg);
 
@@ -118,11 +118,11 @@ namespace Gag
                         GC.Collect();
                      	PerformGUIStep();
                     }
-                    
-                    if(Regex.IsMatch(fileInfo.Extension, @".+(mov)$|.+(mpg)", RegexOptions.IgnoreCase))
+
+                    if (Regex.IsMatch(fileInfo.Extension, @".+(mov)$|.+(mpg)|.+(avi)", RegexOptions.IgnoreCase))
                     {
                     	ChangeGUIStatusMessage(StaticTools.AppStringRManager.GetString("ProgressBarStep1VideoTitle").Replace("%v%",fileInfo.Name));
-                    	VideoProcessor.Convert2Theora(fileInfo.FullName, wDir.FullName, _GData.MiniPicWidth, _GData.MiniPicHeight);
+                    	VideoProcessor.Convert2Theora(fileInfo.FullName, wDir.FullName, _GData.MiniPicWidth * 3, _GData.MiniPicHeight * 3);
                     	PerformGUIStep();
                     }
                     
