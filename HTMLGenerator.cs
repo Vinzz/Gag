@@ -9,7 +9,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using Gag.Properties; 
 
 namespace Gag
 {
@@ -33,8 +34,7 @@ namespace Gag
 
                 gData.htmltemplate = wDir.FullName + @"\index.html";
                 
-                myIndex.WriteLine(@"<!DOCTYPE html PUBLIC ""-//W3C//DTD HTML 4.01 Transitional//EN"">");
-                myIndex.WriteLine("<html>");
+                myIndex.WriteLine(@"<!DOCTYPE html PUBLIC ""-//W3C//DTD HTML 4.01 Transitional//EN""><html>");
                 myIndex.WriteLine("<head>");
                 myIndex.WriteLine("<title>" + wDir.Name + "</title>");
                 myIndex.WriteLine(@"<meta content=""text/html; charset=UTF-8"" http-equiv=""content-type"">");
@@ -49,6 +49,13 @@ namespace Gag
    				myIndex.WriteLine(@"height:" + gData.MiniPicHeight + "px;");
    				myIndex.WriteLine(@"width:" + gData.MiniPicWidth + "px;");
 				myIndex.WriteLine(@"}");
+                myIndex.WriteLine(@"video{
+                                      -moz-transform:rotate(00deg);
+                                      -webkit-transform:rotate(00deg);
+                                      -o-transform:rotate(00deg);
+                                      -ms-transform:rotate(00deg);
+                                      transform:rotate(00deg);
+                                    }");
                 myIndex.WriteLine(@"</style>");
 
                 //LightBox integration
@@ -119,9 +126,9 @@ namespace Gag
 	            	if(currentString.Contains("span") && currentString.Contains("pic"))
 	            	{
 	            		myBuilder.AppendLine(@"<BR/>");
-	            		myBuilder.AppendLine(@"<big style=""font-weight: italic;"">" + StaticTools.AppStringRManager.GetString("AdPrefix") +
+	            		myBuilder.AppendLine(@"<big style=""font-weight: italic;"">" + Resources.AdPrefix +
 	                                  @"<a href=""http://yocto.projects.free.fr/Programs/Gag/Gag.html"">GAG</a>" +
-	                                  StaticTools.AppStringRManager.GetString("AdSuffix") + @"</big>");
+	                                  Resources.AdSuffix + @"</big>");
 	            		
 						long i = 0;
 						bool flag = false;
@@ -152,14 +159,23 @@ namespace Gag
 		                    #endregion
 		                    
 		                    #region videos
-		                    if (Regex.IsMatch(fileInfo.Extension, @".+(ogv)", RegexOptions.IgnoreCase) || Regex.IsMatch(fileInfo.Extension, @".+(avi)", RegexOptions.IgnoreCase))
+                            if (Regex.IsMatch(fileInfo.Extension, @".+(webm)", RegexOptions.IgnoreCase) || Regex.IsMatch(fileInfo.Extension, @".+(mp4)", RegexOptions.IgnoreCase))
+                                continue;
+
+
+		                    if (Regex.IsMatch(fileInfo.Extension, @".+(ogv)", RegexOptions.IgnoreCase))
 		                    {
 		                    	myBuilder.AppendLine("<br/><br/>");
 		                   
-								myBuilder.AppendLine(@"<video src=""" + fileInfo.Name + @""" controls='true'>");
-								
+                                string videoName = Path.GetFileNameWithoutExtension(fileInfo.FullName);
+
+								myBuilder.AppendLine(@"<video controls>");
+                                myBuilder.AppendLine(string.Format(@"<source src='{0}.webm' type='video/webm; codecs=""vp8.0, vorbis""'>", videoName));
+                                myBuilder.AppendLine(string.Format(@"<source src='{0}.ogv' type='video/ogg; codecs=""theora, vorbis""'>", videoName));
+                                myBuilder.AppendLine(string.Format(@"<source src='{0}.mp4' type='video/mp4; codecs=""avc1.4D401E, mp4a.40.2""'>", videoName));
+
 								myBuilder.AppendLine(@"<div id='novideo'>");
-								myBuilder.AppendLine(StaticTools.AppStringRManager.GetString("NoVideoTagSupport"));
+								myBuilder.AppendLine(Resources.NoVideoTagSupport);
 							    myBuilder.AppendLine(@"</div>");
 								myBuilder.AppendLine(@"</video>");									
 		                    	myBuilder.AppendLine("<br/><br/>");
@@ -172,13 +188,13 @@ namespace Gag
 		                if(gData.ZipArchive == true)
 		                {
 		                	myBuilder.AppendLine(@"<br/><br/>");
-	            			myBuilder.AppendLine(@"<a href=""GenuinePictures.zip"">" + StaticTools.AppStringRManager.GetString("ZipArchive") + "</a>");
+	            			myBuilder.AppendLine(@"<a href=""GenuinePictures.zip"">" + Resources.ZipArchive + "</a>");
 		                }
 
                         if (gData.LightBox == true)
 	           			{
 		                	myBuilder.AppendLine(@"<br/><br/>");
-	            			myBuilder.AppendLine(StaticTools.AppStringRManager.GetString("LightBox") + @"<a href=""http://www.huddletogether.com/projects/lightbox2/"">" + "LightBox 2"  + "</a>");
+	            			myBuilder.AppendLine(Resources.LightBox + @"<a href=""http://www.huddletogether.com/projects/lightbox2/"">" + "LightBox 2"  + "</a>");
 		                }
 		             }
 	           		}

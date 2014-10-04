@@ -17,9 +17,7 @@ using System.Resources;
 namespace Gag
 {
 	public abstract class StaticTools
-    {
-		static public ResourceManager AppStringRManager = new ResourceManager("Gag.StringResources", Assembly.GetExecutingAssembly() );
-            	
+    {  	
 		static public string GetExecutingDir()
 		{
 			System.Reflection.Assembly currentAssembly = System.Reflection.Assembly.GetAssembly(typeof(Program));

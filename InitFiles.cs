@@ -12,6 +12,7 @@ using System.Xml.Serialization;
 using System.Text.RegularExpressions;
 using System.Resources;
 using System.Reflection;
+using Gag.Properties;
 
 namespace Gag
 {
@@ -172,31 +173,31 @@ namespace Gag
         	{   	
         		if(!CheckMail(gData.MailFrom))
         		{
-        			StaticTools.ShowMessage(StaticTools.AppStringRManager.GetString("BadMail") + ": " + gData.MailFrom);
+                    StaticTools.ShowMessage(Resources.BadMail + ": " + gData.MailFrom);
         			return false;
         		}
         		
         		if(!CheckMail(gData.MailTo))
         		{
-        			StaticTools.ShowMessage(StaticTools.AppStringRManager.GetString("BadMail") + ": " + gData.MailTo);
+        			StaticTools.ShowMessage(Resources.BadMail + ": " + gData.MailTo);
         			return false;
         		}
         		
         		if(!CheckURL(gData.ftpServer))
         		{
-        			StaticTools.ShowMessage(StaticTools.AppStringRManager.GetString("BadURL") + ": " + gData.ftpServer);
+        			StaticTools.ShowMessage(Resources.BadURL + ": " + gData.ftpServer);
         			return false;
         		}
         		
         		if(!CheckHtmlTemplate(gData.htmltemplate))
         		{
-        			StaticTools.ShowMessage(StaticTools.AppStringRManager.GetString("BadTemplate"));
+        			StaticTools.ShowMessage(Resources.BadTemplate);
         			return false;
         		}
         		
         		if(!CheckURL(gData.httpServer))
         		{
-       			StaticTools.ShowMessage(StaticTools.AppStringRManager.GetString("BadURL") + ": " + gData.httpServer);
+       			StaticTools.ShowMessage(Resources.BadURL + ": " + gData.httpServer);
         			return false;
         		}
         		
@@ -207,7 +208,7 @@ namespace Gag
         			
         			if( (dir.GetFiles().Length > 0) || (dir.GetDirectories().Length > 0) )
         			{
-        				if(StaticTools.ShowDialog(StaticTools.AppStringRManager.GetString("FullOutDir") + ": " + gData.OutputPath) == DialogResult.Cancel)
+        				if(StaticTools.ShowDialog(Resources.FullOutDir + ": " + gData.OutputPath) == DialogResult.Cancel)
         					return false;        				
         			}
         		}

@@ -16,6 +16,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Resources;
 using System.Reflection;
+using Gag.Properties;
 
 namespace Gag
 {
@@ -99,7 +100,8 @@ namespace Gag
                 {
                     if (Regex.IsMatch(fileInfo.Extension, @".+(jpg)$|.+(jpeg)", RegexOptions.IgnoreCase))
                     {
-                    	ChangeGUIStatusMessage(StaticTools.AppStringRManager.GetString("ProgressBarStep1Title"));
+
+                        ChangeGUIStatusMessage(Resources.ProgressBarStep1Title);
                         Image Resized = PicProcessor.ResizeToFixedSizeAndRotate(
                                                 fileInfo.FullName,
                                                 _GData.PicWidth, _GData.PicHeight,  ref FileDate);
@@ -119,11 +121,13 @@ namespace Gag
                      	PerformGUIStep();
                     }
 
-                    if (Regex.IsMatch(fileInfo.Extension, @".+(mov)$|.+(mpg)|.+(avi)", RegexOptions.IgnoreCase))
+                    if (Regex.IsMatch(fileInfo.Extension, @".+(mov)$|.+(mpg)|.+(avi)|.+(webm)|.+(ogv)|.+(mp4)", RegexOptions.IgnoreCase))
                     {
-                    	ChangeGUIStatusMessage(StaticTools.AppStringRManager.GetString("ProgressBarStep1VideoTitle").Replace("%v%",fileInfo.Name));
-                    	VideoProcessor.Convert2Theora(fileInfo.FullName, wDir.FullName, _GData.MiniPicWidth * 3, _GData.MiniPicHeight * 3);
+                        VideoProcessor.SendMessageHandler += new GagPicturesMessageHandler(ChangeGUIStatusMessage);
+                    	ChangeGUIStatusMessage(Resources.ProgressBarStep1VideoTitle.Replace("%v%",fileInfo.Name));
+                    	VideoProcessor.Convert2Html5Formats(fileInfo.FullName, wDir.FullName, _GData.MiniPicWidth * 3, _GData.MiniPicHeight * 3);
                     	PerformGUIStep();
+                        ChangeGUIStatusMessage(Resources.ProgressBarStep1Title);
                     }
                     
                     if(_GData.ZipArchive == true)
@@ -136,7 +140,7 @@ namespace Gag
                 //Populate tmp\Mini
                 foreach (FileInfo fileInfo in wDir.GetFiles())
                 {
-            		if (Regex.IsMatch(fileInfo.Extension, @".+(jpg)$|.+(jpeg)", RegexOptions.IgnoreCase))
+                    if (Regex.IsMatch(fileInfo.Extension, @".+(jpg)$|.+(jpeg)|.+(png)|.+(tiff)|.+(bmp)", RegexOptions.IgnoreCase))
             		{
 	                    Image Resized = PicProcessor.ResizeToFixedSizeAndRotate(
 	                                                fileInfo.FullName,
@@ -157,7 +161,7 @@ namespace Gag
                  //Create the original pictures archives
                  if(_GData.ZipArchive == true)
                  {
-                 	ChangeGUIStatusMessage(StaticTools.AppStringRManager.GetString("MakingZip"));
+                 	ChangeGUIStatusMessage(Resources.MakingZip);
 					ChangeGUIProgressBar(stOriginalImages.Count);
                  	ChangeGUICursor(Cursors.WaitCursor);
                  	
@@ -200,7 +204,7 @@ namespace Gag
                 //FTP
                 if(InitFiles.IsFTPOK(_GData))
                 {
-	                ChangeGUIStatusMessage(StaticTools.AppStringRManager.GetString("ProgressBarStep2Title"));
+	                ChangeGUIStatusMessage(Resources.ProgressBarStep2Title);
 	                ChangeGUIProgressBar(currentDir.GetFiles().Length * 2);
 	                PerformGUIStep();
 	                
@@ -226,12 +230,12 @@ namespace Gag
 		                	if(_GData.MailText.Contains("%LOGIN%"))
                                 _GData.MailText = _GData.MailText.Replace("%LOGIN%", _GData.htUser);
 		                	else
-		                		_GData.MailText += "\n\n\t" + StaticTools.AppStringRManager.GetString("htLogin") + _GData.htUser;
+		                		_GData.MailText += "\n\n\t" + Resources.htLogin + _GData.htUser;
 		                	
 		                	if(_GData.MailText.Contains("%PASSWORD%"))
 		                		_GData.MailText = _GData.MailText.Replace("%PASSWORD%", _GData.htPassword);
 		                	else
-		                		_GData.MailText += "\n\t" + StaticTools.AppStringRManager.GetString("htPassword") + _GData.htPassword;
+		                		_GData.MailText += "\n\t" + Resources.htPassword + _GData.htPassword;
 		                }
 		                MailMan.SendMail(_GData);
 	                }

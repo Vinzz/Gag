@@ -112,54 +112,57 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ProgressBarStep2Title" xml:space="preserve">
-    <value>Etape 2 - Télécharger les fichiers sur le serveur FTP</value>
-  </data>
-  <data name="BadMail" xml:space="preserve">
-    <value>Adress(es) mail invalide(s)</value>
-  </data>
-  <data name="BadURL" xml:space="preserve">
-    <value>Adresse web invalide</value>
-  </data>
-  <data name="FullOutDir" xml:space="preserve">
-    <value>Le répertoire de sortie n'est pas vide. Son contenu va être effacé</value>
-  </data>
-  <data name="htPassword" xml:space="preserve">
-    <value>Mot de passe: </value>
-  </data>
-  <data name="htLogin" xml:space="preserve">
-    <value>Utilisateur: </value>
-  </data>
-  <data name="BadTemplate" xml:space="preserve">
-    <value>La chaine &lt;span class = "pic"&gt; n'a pas été trouvée dans le template.</value>
-  </data>
-  <data name="ZipArchive" xml:space="preserve">
-    <value>Images originales (.zip)</value>
+  <data name="AdPrefix" xml:space="preserve">
+    <value>a </value>
   </data>
   <data name="AdSuffix" xml:space="preserve">
-    <value />
+    <value> generated gallery</value>
   </data>
-  <data name="AdPrefix" xml:space="preserve">
-    <value>Une galerie générée par le programme </value>
+  <data name="BadMail" xml:space="preserve">
+    <value>Invalid mail adress(es)</value>
+  </data>
+  <data name="BadTemplate" xml:space="preserve">
+    <value>Can't find any occurence of the &lt;span class = "pic"&gt; in the template. Please check it's present.</value>
+  </data>
+  <data name="BadURL" xml:space="preserve">
+    <value>Invalid URL</value>
+  </data>
+  <data name="FullOutDir" xml:space="preserve">
+    <value>Output directory isn't void. All of it's content will be deleted</value>
+  </data>
+  <data name="htLogin" xml:space="preserve">
+    <value>Login: </value>
+  </data>
+  <data name="htPassword" xml:space="preserve">
+    <value>Password: </value>
   </data>
   <data name="LightBox" xml:space="preserve">
-    <value>Affichage des images assuré par </value>
-  </data>
-  <data name="ProgressBarStep1Title" xml:space="preserve">
-    <value>Etape 1 - Générer les images web</value>
+    <value>Image display courtesy of </value>
   </data>
   <data name="MakingZip" xml:space="preserve">
-    <value>Création de l'archive zip. Veuillez patienter.</value>
-  </data>
-  <data name="ProgressBarStep1VideoTitle" xml:space="preserve">
-    <value>Etape 1 - Traitement de la vidéo %v%, ceci peut être long.</value>
+    <value>Creating Zip File, might be long, please wait...</value>
   </data>
   <data name="NoVideoTagSupport" xml:space="preserve">
-    <value>Votre navigateur ne supporte pas la lecture de cette vidéo. Vous devriez peut-être essayer &lt;a href="www.getfirefox.com"&gt;Firefox&lt;/a&gt;</value>
+    <value>Your browser seems not to support this video. You may try &lt;a href="www.getfirefox.com"&gt;Firefox&lt;/a&gt;</value>
+  </data>
+  <data name="ProcessVideo" xml:space="preserve">
+    <value>Processing {0}  ({2}/3): {1}% remaining {3}s</value>
+  </data>
+  <data name="ProgressBarStep1Title" xml:space="preserve">
+    <value>Step 1 - Generate the web pictures</value>
+  </data>
+  <data name="ProgressBarStep1VideoTitle" xml:space="preserve">
+    <value>Etape 1 - Processing video %v%, it might take some time.</value>
+  </data>
+  <data name="ProgressBarStep2Title" xml:space="preserve">
+    <value>Step 2 - Push the files on the FTP server</value>
+  </data>
+  <data name="ZipArchive" xml:space="preserve">
+    <value>Original sized pictures archive (.zip)</value>
   </data>
 </root>
