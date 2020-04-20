@@ -526,8 +526,8 @@ Lightbox.prototype = {
 
 	resizeImageAndContainer: function(imgWidth, imgHeight) {
 		if(resize == 1) {//resize mod by magarnicle
-			useableWidth = 0.9; // 90% of the window
-			useableHeight = 0.8; // 80% of the window
+			useableWidth = 0.95; // 95% of the window
+			useableHeight = 0.85; // 85% of the window
 			var arrayPageSize = getPageSize();
 			windowWidth = arrayPageSize[2];
 			windowHeight = arrayPageSize[3];

@@ -9,6 +9,6 @@ telling you to check-out this cool new web gallery.
 
 No php/mysql, just plain simple html/css 
 
-Old and clunky C# webform codebase, but dutofuly do the job
+Old and clunky C# webform codebase, but dutifully do the job
 
 http://yocto.projects.free.fr/Programs/Gag/Gag.html

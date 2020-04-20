@@ -69,10 +69,10 @@ namespace Gag
         public string htUser="";
         public string htPassword="";
         
-        public int PicWidth= 1024;
-        public int PicHeight= 768;
-        public int MiniPicWidth= 320;
-        public int MiniPicHeight= 240;
+        public int PicWidth= 1700;
+        public int PicHeight= 1275;
+        public int MiniPicWidth= 450;
+        public int MiniPicHeight= 338;
         
         public string htmltemplate="";
         
