@@ -700,13 +700,13 @@ Lightbox.prototype = {
 
 		if((key == 'x') || (key == 'o') || (key == 'c')){	// close lightbox
 			myLightbox.end();
-		} else if((keycode == 188) || (key == 'p')){	// display previous image
+		} else if((keycode == 37) || (keycode == 38) || (key == 'p')){	// display previous image @@@@@@@@@@@@@
 			if(activeImage != 0){
 				if (slideshow == 1) keyPressed = true;
 				myLightbox.disableKeyboardNav();							
 				myLightbox.changeImage(activeImage - 1);
 			}
-		} else if((keycode == 190) || (key == 'n')){	// display next image
+		} else if((keycode == 39) || (keycode == 40) || (key == 'n')){	// display next image
 			if(activeImage != (imageArray.length - 1)){
 				if (slideshow == 1) keyPressed = true;
 				myLightbox.disableKeyboardNav();				
