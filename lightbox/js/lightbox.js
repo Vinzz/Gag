@@ -582,12 +582,25 @@ Lightbox.prototype = {
 		
 		if((key == 'x') || (key == 'o') || (key == 'c') || (keycode == escapeKey)){	// close lightbox
 			myLightbox.end();
-		} else if((key == 'p') || (keycode == 37)){	// display previous image
+		} else if((key == 'p')){	// display previous image keycode == 37
 			if(activeImage != 0){
 				myLightbox.disableKeyboardNav();
 				myLightbox.changeImage(activeImage - 1);
 			}
-		} else if((key == 'n') || (keycode == 39)){	// display next image
+		}  
+		else if(keycode == 37){	// display previous image keycode == 37
+			if(activeImage != 0){
+				myLightbox.disableKeyboardNav();
+				myLightbox.changeImage(activeImage - 1);
+			}
+		}
+		else if((key == 'n')){	// display next image
+			if(activeImage != (imageArray.length - 1)){
+				myLightbox.disableKeyboardNav();
+				myLightbox.changeImage(activeImage + 1);
+			}
+		}
+	    else if(keycode == 39){	// display next image
 			if(activeImage != (imageArray.length - 1)){
 				myLightbox.disableKeyboardNav();
 				myLightbox.changeImage(activeImage + 1);
